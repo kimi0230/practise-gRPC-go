@@ -2,10 +2,6 @@
 
 From [simplesteph/grpc-go-course](https://github.com/simplesteph/grpc-go-course)
 
-This is a companion repository for my [GRPC Golang course](http://bit.ly/grpc-golang-github)
-
-[![course logo](https://udemy-images.udemy.com/course/480x270/1685664_10e0_4.jpg)](http://bit.ly/grpc-golang-github)
-
 # Content
 
 - Greeting Service
@@ -14,9 +10,15 @@ This is a companion repository for my [GRPC Golang course](http://bit.ly/grpc-go
 - Error Handling, Deadlines, SSL Encryption
 - Blog API CRUD w/ MongoDB
 
-# Installation (MAC)
-```
+# Installation
+
+### MAC
+``` shell
 brew install protobuf
 go get -u google.golang.org/grpc
 go get -u github.com/golang/protobuf/protoc-gen-go
 ```
+
+# Reference
+* https://developers.google.com/protocol-buffers/docs/gotutorial
+* https://github.com/simplesteph/grpc-go-course
