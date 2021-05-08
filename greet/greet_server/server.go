@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"grpc-go-course_StephaneMaarek/greet/greetpb"
+	"grpc-go-course-udemy/greet/greetpb"
+
 	"log"
 	"net"
 
