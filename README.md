@@ -13,3 +13,10 @@ This is a companion repository for my [GRPC Golang course](http://bit.ly/grpc-go
 - Unary, Server Streaming, Client Streaming, BiDi Streaming
 - Error Handling, Deadlines, SSL Encryption
 - Blog API CRUD w/ MongoDB
+
+# Installation (MAC)
+```
+brew install protobuf
+go get -u google.golang.org/grpc
+go get -u github.com/golang/protobuf/protoc-gen-go
+```

@@ -15,6 +15,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("could not connect: %v", err)
 	}
+	defer cc.Close()
 
 	c := greetpb.NewGreetServiceClient(cc)
+	fmt.Printf("Created client: %f", c)
 }
