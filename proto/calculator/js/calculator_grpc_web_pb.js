@@ -150,5 +150,80 @@ proto.calculator.CalculatorServicePromiseClient.prototype.sum =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.calculator.PrimeNumberDecompositionRequest,
+ *   !proto.calculator.PrimeNumberDecompositionResponse>}
+ */
+const methodDescriptor_CalculatorService_PrimeNumberDecomposition = new grpc.web.MethodDescriptor(
+  '/calculator.CalculatorService/PrimeNumberDecomposition',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.calculator.PrimeNumberDecompositionRequest,
+  proto.calculator.PrimeNumberDecompositionResponse,
+  /**
+   * @param {!proto.calculator.PrimeNumberDecompositionRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.calculator.PrimeNumberDecompositionResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.calculator.PrimeNumberDecompositionRequest,
+ *   !proto.calculator.PrimeNumberDecompositionResponse>}
+ */
+const methodInfo_CalculatorService_PrimeNumberDecomposition = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.calculator.PrimeNumberDecompositionResponse,
+  /**
+   * @param {!proto.calculator.PrimeNumberDecompositionRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.calculator.PrimeNumberDecompositionResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.calculator.PrimeNumberDecompositionRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.calculator.PrimeNumberDecompositionResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.calculator.CalculatorServiceClient.prototype.primeNumberDecomposition =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/calculator.CalculatorService/PrimeNumberDecomposition',
+      request,
+      metadata || {},
+      methodDescriptor_CalculatorService_PrimeNumberDecomposition);
+};
+
+
+/**
+ * @param {!proto.calculator.PrimeNumberDecompositionRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.calculator.PrimeNumberDecompositionResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.calculator.CalculatorServicePromiseClient.prototype.primeNumberDecomposition =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/calculator.CalculatorService/PrimeNumberDecomposition',
+      request,
+      metadata || {},
+      methodDescriptor_CalculatorService_PrimeNumberDecomposition);
+};
+
+
 module.exports = proto.calculator;
 
