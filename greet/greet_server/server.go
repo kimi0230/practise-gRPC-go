@@ -19,6 +19,7 @@ import (
 
 type server struct{}
 
+// Unary
 func (*server) Greet(ctx context.Context, req *greetpb.GreetRequest) (*greetpb.GreetResponse, error) {
 	fmt.Printf("Greet function was invoked with %v\n", req)
 	firstName := req.GetGreeting().GetFirstName()
@@ -29,6 +30,7 @@ func (*server) Greet(ctx context.Context, req *greetpb.GreetRequest) (*greetpb.G
 	return res, nil
 }
 
+// Server Streaming
 func (*server) GreetManyTimes(req *greetpb.GreetManyTimesRequest, stream greetpb.GreetService_GreetManyTimesServer) error {
 	fmt.Printf("GreetManyTimes function was invoked with %v\n", req)
 	firstName := req.GetGreeting().GetFirstName()
@@ -43,6 +45,7 @@ func (*server) GreetManyTimes(req *greetpb.GreetManyTimesRequest, stream greetpb
 	return nil
 }
 
+// Client Streaming
 func (*server) LongGreet(stream greetpb.GreetService_LongGreetServer) error {
 	fmt.Printf("LongGreet function was invoked with a streaming request\n")
 	result := ""
@@ -63,6 +66,7 @@ func (*server) LongGreet(stream greetpb.GreetService_LongGreetServer) error {
 	}
 }
 
+// Bi-Directional Streaming
 func (*server) GreetEveryone(stream greetpb.GreetService_GreetEveryoneServer) error {
 	fmt.Printf("GreetEveryone function was invoked with a streaming request\n")
 
