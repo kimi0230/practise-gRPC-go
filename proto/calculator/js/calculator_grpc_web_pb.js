@@ -225,5 +225,85 @@ proto.calculator.CalculatorServicePromiseClient.prototype.primeNumberDecompositi
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.calculator.SquareRootRequest,
+ *   !proto.calculator.SquareRootResponse>}
+ */
+const methodDescriptor_CalculatorService_SquareRoot = new grpc.web.MethodDescriptor(
+  '/calculator.CalculatorService/SquareRoot',
+  grpc.web.MethodType.UNARY,
+  proto.calculator.SquareRootRequest,
+  proto.calculator.SquareRootResponse,
+  /**
+   * @param {!proto.calculator.SquareRootRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.calculator.SquareRootResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.calculator.SquareRootRequest,
+ *   !proto.calculator.SquareRootResponse>}
+ */
+const methodInfo_CalculatorService_SquareRoot = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.calculator.SquareRootResponse,
+  /**
+   * @param {!proto.calculator.SquareRootRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.calculator.SquareRootResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.calculator.SquareRootRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.calculator.SquareRootResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.calculator.SquareRootResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.calculator.CalculatorServiceClient.prototype.squareRoot =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/calculator.CalculatorService/SquareRoot',
+      request,
+      metadata || {},
+      methodDescriptor_CalculatorService_SquareRoot,
+      callback);
+};
+
+
+/**
+ * @param {!proto.calculator.SquareRootRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.calculator.SquareRootResponse>}
+ *     Promise that resolves to the response
+ */
+proto.calculator.CalculatorServicePromiseClient.prototype.squareRoot =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/calculator.CalculatorService/SquareRoot',
+      request,
+      metadata || {},
+      methodDescriptor_CalculatorService_SquareRoot);
+};
+
+
 module.exports = proto.calculator;
 
