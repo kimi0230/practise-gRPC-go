@@ -1,1 +1,2 @@
+*.rb linguist-language=Go
 proto/greet/js/* linguist-generated=true
