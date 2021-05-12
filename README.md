@@ -22,7 +22,7 @@ go get -u github.com/gogo/protobuf/protoc-gen-gofast
 ```
 
 ### [evans]
-##### Installation
+##### installation
 Evans has been created to use easier than other existing gRPC clients.
 ``` shell
 brew tap ktr0731/evans
@@ -38,6 +38,57 @@ evans -p 50051 -r
 show package
 show service
 call Sum
+```
+
+### MongoDB
+#### 1. Offical Install Package
+##### download
+https://www.mongodb.com/try/download/community
+
+##### [installation][mongodb-osx-install]
+mv file to /usr/local and change name
+``` shell
+cd /usr/local
+mv ~/mongodb-macos-x86_64-4.4.6/ mongodb
+```
+
+add bin to path
+``` shell
+vi ~/.zshrc
+# add PATH
+export PATH=/usr/local/mongodb/bin:$PATH
+source ~/.zshrc
+```
+
+create data, log folder
+``` shell
+# create data, log folder
+sudo mkdir -p /usr/local/var/mongodb
+sudo mkdir -p /usr/local/var/log/mongodb
+
+# make sure folder permission
+sudo chown kimiimac /usr/local/var/mongodb
+sudo chown kimiimac /usr/local/var/log/mongodb
+```
+
+start MongoDB
+``` shell
+mongod --dbpath /usr/local/var/mongodb --logpath /usr/local/var/log/mongodb/mongo.log --fork
+```
+
+#### 2. Brew Install
+```
+# install
+brew tap mongodb/brew
+sudo chown -R $(whoami) /usr/local/var/log
+chmod u+w /usr/local/var/log
+brew install mongodb-community
+
+# brew start
+brew services start mongodb-community@4.4
+
+# start MongoDB
+mongod --config /usr/local/etc/mongod.conf --fork
 ```
 
 # Generate protobuf
@@ -138,3 +189,4 @@ go run calculator/calculator_client/client.go
 [protobuf]: https://github.com/gogo/protobuf
 [auth]: https://grpc.io/docs/guides/auth/
 [evans]: https://github.com/ktr0731/evans
+[mongodb-osx-install]: https://www.runoob.com/mongodb/mongodb-osx-install.html
