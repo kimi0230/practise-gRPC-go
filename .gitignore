@@ -1,5 +1,4 @@
 .idea/
-ssl/ca.key
-ssl/server.key
-ssl/server.pem
-ssl/server.crt
+/ssl/*
+!/ssl/instructions.sh
+!/ssl/ssl.cnf
