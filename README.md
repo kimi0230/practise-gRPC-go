@@ -1,6 +1,6 @@
 # gRPC Golang Course
 
-Practise gRPC From [simplesteph/grpc-go-course][grpc-go-course]
+Practise gRPC [simplesteph/grpc-go-course][grpc-go-course]
 
 # Content
 
