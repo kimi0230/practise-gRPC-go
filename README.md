@@ -1,6 +1,6 @@
 # gRPC Golang Course
 
-Practise gRPC From [simplesteph/grpc-go-course](https://github.com/simplesteph/grpc-go-course)
+Practise gRPC From [simplesteph/grpc-go-course][grpc-go-course]
 
 # Content
 
@@ -19,6 +19,25 @@ go get -u google.golang.org/grpc
 go get -u github.com/golang/protobuf/protoc-gen-go
 # Use it to generate faster marshaling and unmarshaling go code for your protocol buffers.
 go get -u github.com/gogo/protobuf/protoc-gen-gofast
+```
+
+### [evans]
+##### Installation
+Evans has been created to use easier than other existing gRPC clients.
+``` shell
+brew tap ktr0731/evans
+brew install evans
+```
+
+##### usage
+``` shell
+# connect to gRPC server
+evans -p 50051 -r
+
+# commands
+show package
+show service
+call Sum
 ```
 
 # Generate protobuf
@@ -40,7 +59,7 @@ cd ssl
 ```
 
 ### code sample
-* https://grpc.io/docs/guides/auth/
+* [gRPC Authentication][auth]
 #### 1. Base case - no encryption or authentication
 ##### Client:
 ```go
@@ -111,3 +130,11 @@ go run calculator/calculator_client/client.go
 * https://github.com/simplesteph/grpc-go-course
 * https://github.com/gogo/protobuf
 * https://grpc.io/docs/guides/auth/
+* https://github.com/ktr0731/evans
+
+<!-- https://www.markdownguide.org/basic-syntax/ -->
+[gotutorial]: https://developers.google.com/protocol-buffers/docs/gotutorial
+[grpc-go-course]: https://github.com/simplesteph/grpc-go-course
+[protobuf]: https://github.com/gogo/protobuf
+[auth]: https://grpc.io/docs/guides/auth/
+[evans]: https://github.com/ktr0731/evans
