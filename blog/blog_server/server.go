@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"grpc-go-course/blog/blogpb"
+	"grpc-go-course-udemy/blog/blogpb"
 	"log"
 	"net"
 	"os"
@@ -21,12 +21,12 @@ import (
 var collection *mongo.Collection
 
 type server struct {
-	blogpb.BlogServiceServer
 }
 
 func (*server) CreateBlog(ctx context.Context, req *blogpb.CreateBlogRequest) (*blogpb.CreateBlogResponse, error) {
-
+	fmt.Println("Create blog request")
 	blog := req.GetBlog()
+
 	data := blogItem{
 		AuthorID: blog.GetAuthorId(),
 		Title:    blog.GetTitle(),
@@ -40,7 +40,6 @@ func (*server) CreateBlog(ctx context.Context, req *blogpb.CreateBlogRequest) (*
 			fmt.Sprintf("Internal error: %v", err),
 		)
 	}
-
 	oid, ok := res.InsertedID.(primitive.ObjectID)
 	if !ok {
 		return nil, status.Errorf(
@@ -57,6 +56,7 @@ func (*server) CreateBlog(ctx context.Context, req *blogpb.CreateBlogRequest) (*
 			Content:  blog.GetContent(),
 		},
 	}, nil
+
 }
 
 type blogItem struct {
@@ -72,10 +72,11 @@ func main() {
 
 	fmt.Println("Connecting to MongoDB")
 	// connect to MongoDB
-	//https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo
+	// https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo
 	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 	defer cancel()
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://foo:bar@localhost:27017"))
+	// client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://foo:bar@localhost:27017"))
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
 	if err != nil {
 		log.Fatal(err)
 		return
@@ -83,9 +84,6 @@ func main() {
 	defer client.Disconnect(context.TODO())
 
 	collection = client.Database("mydb").Collection("blog")
-	if collection != nil {
-		log.Fatal(err)
-	}
 
 	fmt.Println("Blog Server Started")
 	lis, err := net.Listen("tcp", "0.0.0.0:50051")
@@ -96,7 +94,7 @@ func main() {
 	opts := []grpc.ServerOption{}
 	certFile := "ssl/server.crt"
 	keyFile := "ssl/server.pem"
-	tls := true
+	tls := false
 	if tls {
 		// https://grpc.io/docs/guides/auth/
 		creds, sslErr := credentials.NewServerTLSFromFile(certFile, keyFile)

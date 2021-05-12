@@ -23,7 +23,8 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 go get -u github.com/gogo/protobuf/protoc-gen-gofast
 
 # MongoDB Go Driver
-go get go.mongodb.org/mongo-driver/mongo
+go get -u go.mongodb.org/mongo-driver/mongo
+go get -u gopkg.in/mgo.v2/bson
 ```
 
 ### [evans]
@@ -90,7 +91,7 @@ chmod u+w /usr/local/var/log
 brew install mongodb-community
 
 # brew start
-brew services start mongodb-community@4.4
+brew services start mongodb-community
 
 # start MongoDB
 mongod --config /usr/local/etc/mongod.conf --fork
