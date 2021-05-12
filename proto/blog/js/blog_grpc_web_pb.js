@@ -150,5 +150,85 @@ proto.blog.BlogServicePromiseClient.prototype.createBlog =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.blog.ReadBlogRequest,
+ *   !proto.blog.ReadBlogResponse>}
+ */
+const methodDescriptor_BlogService_ReadBlog = new grpc.web.MethodDescriptor(
+  '/blog.BlogService/ReadBlog',
+  grpc.web.MethodType.UNARY,
+  proto.blog.ReadBlogRequest,
+  proto.blog.ReadBlogResponse,
+  /**
+   * @param {!proto.blog.ReadBlogRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.ReadBlogResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.blog.ReadBlogRequest,
+ *   !proto.blog.ReadBlogResponse>}
+ */
+const methodInfo_BlogService_ReadBlog = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.blog.ReadBlogResponse,
+  /**
+   * @param {!proto.blog.ReadBlogRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.ReadBlogResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.blog.ReadBlogRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.blog.ReadBlogResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.blog.ReadBlogResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.blog.BlogServiceClient.prototype.readBlog =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/blog.BlogService/ReadBlog',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_ReadBlog,
+      callback);
+};
+
+
+/**
+ * @param {!proto.blog.ReadBlogRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.blog.ReadBlogResponse>}
+ *     Promise that resolves to the response
+ */
+proto.blog.BlogServicePromiseClient.prototype.readBlog =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/blog.BlogService/ReadBlog',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_ReadBlog);
+};
+
+
 module.exports = proto.blog;
 
