@@ -1,2 +1,2 @@
 *.rb linguist-language=Go
-*.js linguist-vendored
+proto/*.js linguist-vendored
