@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"grpc-go-course/blog/blogpb"
+	"grpc-go-course-udemy/blog/blogpb"
 	"log"
 
 	"google.golang.org/grpc"
