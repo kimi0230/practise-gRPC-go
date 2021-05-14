@@ -230,5 +230,85 @@ proto.blog.BlogServicePromiseClient.prototype.readBlog =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.blog.UpdateBlogRequest,
+ *   !proto.blog.UpdateBlogResponse>}
+ */
+const methodDescriptor_BlogService_UpdateBlog = new grpc.web.MethodDescriptor(
+  '/blog.BlogService/UpdateBlog',
+  grpc.web.MethodType.UNARY,
+  proto.blog.UpdateBlogRequest,
+  proto.blog.UpdateBlogResponse,
+  /**
+   * @param {!proto.blog.UpdateBlogRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.UpdateBlogResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.blog.UpdateBlogRequest,
+ *   !proto.blog.UpdateBlogResponse>}
+ */
+const methodInfo_BlogService_UpdateBlog = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.blog.UpdateBlogResponse,
+  /**
+   * @param {!proto.blog.UpdateBlogRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.UpdateBlogResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.blog.UpdateBlogRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.blog.UpdateBlogResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.blog.UpdateBlogResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.blog.BlogServiceClient.prototype.updateBlog =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/blog.BlogService/UpdateBlog',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_UpdateBlog,
+      callback);
+};
+
+
+/**
+ * @param {!proto.blog.UpdateBlogRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.blog.UpdateBlogResponse>}
+ *     Promise that resolves to the response
+ */
+proto.blog.BlogServicePromiseClient.prototype.updateBlog =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/blog.BlogService/UpdateBlog',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_UpdateBlog);
+};
+
+
 module.exports = proto.blog;
 
