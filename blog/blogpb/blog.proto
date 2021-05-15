@@ -48,6 +48,6 @@ service BlogService {
   // https://stackoverflow.com/questions/43167762/how-to-return-an-array-in-protobuf-service-rpc
   rpc ListBlog(ListBlogRequest) returns (stream ListBlogResponse);
 
-  // set a response message which will use a repeated object:
+  // set a response message which will use a repeated object
   rpc ListBlogs(ListBlogRepeatedRequest) returns (ListBlogRepeatedResponse) {}
 }

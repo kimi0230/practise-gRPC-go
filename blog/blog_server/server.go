@@ -190,6 +190,7 @@ func (*server) ListBlog(res *blogpb.ListBlogRequest, stream blogpb.BlogService_L
 	return nil
 }
 
+// Use repeated object
 func (*server) ListBlogs(ctx context.Context, req *blogpb.ListBlogRepeatedRequest) (*blogpb.ListBlogRepeatedResponse, error) {
 	fmt.Println("List blogs request")
 

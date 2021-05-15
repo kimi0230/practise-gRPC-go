@@ -86,7 +86,8 @@ func main() {
 	}
 	fmt.Printf("Blog was deleted: %v \n", deleteRes)
 
-	// list Blogs
+	// list Blogs by steam
+	fmt.Println("List Blogs by steam")
 	stream, err := c.ListBlog(context.Background(), &blogpb.ListBlogRequest{})
 	if err != nil {
 		log.Fatalf("error while calling ListBlog RPC: %v", err)
@@ -101,4 +102,13 @@ func main() {
 		}
 		fmt.Println(res.GetBlog())
 	}
+
+	// list Blogs by repeated object
+	fmt.Println("List Blogs by repeated object")
+	res, err := c.ListBlogs(context.Background(), &blogpb.ListBlogRepeatedRequest{})
+	if err != nil {
+		log.Fatalf("error while calling ListBlog RPC: %v", err)
+	}
+
+	fmt.Println(res.GetBlog())
 }
