@@ -27,6 +27,10 @@ message DeleteBlogRequest { string blog_id = 1; }
 
 message DeleteBlogResponse { string blog_id = 1; }
 
+message ListBlogRequest {}
+
+message ListBlogResponse { Blog blog = 1; }
+
 service BlogService {
   rpc CreateBlog(CreateBlogRequest) returns (CreateBlogResponse);
 
@@ -36,4 +40,7 @@ service BlogService {
   rpc UpdateBlog(UpdateBlogRequest) returns (UpdateBlogResponse);
 
   rpc DeleteBlog(DeleteBlogRequest) returns (DeleteBlogResponse);
+
+  // https://stackoverflow.com/questions/43167762/how-to-return-an-array-in-protobuf-service-rpc
+  rpc ListBlog(ListBlogRequest) returns (stream ListBlogResponse);
 }

@@ -390,5 +390,80 @@ proto.blog.BlogServicePromiseClient.prototype.deleteBlog =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.blog.ListBlogRequest,
+ *   !proto.blog.ListBlogResponse>}
+ */
+const methodDescriptor_BlogService_ListBlog = new grpc.web.MethodDescriptor(
+  '/blog.BlogService/ListBlog',
+  grpc.web.MethodType.SERVER_STREAMING,
+  proto.blog.ListBlogRequest,
+  proto.blog.ListBlogResponse,
+  /**
+   * @param {!proto.blog.ListBlogRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.ListBlogResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.blog.ListBlogRequest,
+ *   !proto.blog.ListBlogResponse>}
+ */
+const methodInfo_BlogService_ListBlog = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.blog.ListBlogResponse,
+  /**
+   * @param {!proto.blog.ListBlogRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.ListBlogResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.blog.ListBlogRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.blog.ListBlogResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.blog.BlogServiceClient.prototype.listBlog =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/blog.BlogService/ListBlog',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_ListBlog);
+};
+
+
+/**
+ * @param {!proto.blog.ListBlogRequest} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.blog.ListBlogResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.blog.BlogServicePromiseClient.prototype.listBlog =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/blog.BlogService/ListBlog',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_ListBlog);
+};
+
+
 module.exports = proto.blog;
 
