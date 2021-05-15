@@ -141,7 +141,6 @@ func (*server) DeleteBlog(ctx context.Context, req *blogpb.DeleteBlogRequest) (*
 		)
 	}
 
-	data := &blogItem{}
 	filter := bson.M{"_id": oid}
 
 	res, err := collection.DeleteOne(ctx, filter)
