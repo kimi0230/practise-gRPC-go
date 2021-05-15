@@ -247,12 +247,12 @@ func main() {
 
 	s := grpc.NewServer(opts...)
 	blogpb.RegisterBlogServiceServer(s, &server{})
+	// Register reflection service on gRPC server.
+	// https://github.com/grpc/grpc-go/tree/master/reflection
+	reflection.Register(s)
 
 	go func() {
 		defer lis.Close()
-		// Register reflection service on gRPC server.
-		// https://github.com/grpc/grpc-go/tree/master/reflection
-		reflection.Register(s)
 
 		if err := s.Serve(lis); err != nil {
 			log.Fatalf("Failed to serve : %v", err)
