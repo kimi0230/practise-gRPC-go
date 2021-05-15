@@ -310,5 +310,85 @@ proto.blog.BlogServicePromiseClient.prototype.updateBlog =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.blog.DeleteBlogRequest,
+ *   !proto.blog.DeleteBlogResponse>}
+ */
+const methodDescriptor_BlogService_DeleteBlog = new grpc.web.MethodDescriptor(
+  '/blog.BlogService/DeleteBlog',
+  grpc.web.MethodType.UNARY,
+  proto.blog.DeleteBlogRequest,
+  proto.blog.DeleteBlogResponse,
+  /**
+   * @param {!proto.blog.DeleteBlogRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.DeleteBlogResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.blog.DeleteBlogRequest,
+ *   !proto.blog.DeleteBlogResponse>}
+ */
+const methodInfo_BlogService_DeleteBlog = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.blog.DeleteBlogResponse,
+  /**
+   * @param {!proto.blog.DeleteBlogRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.DeleteBlogResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.blog.DeleteBlogRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.blog.DeleteBlogResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.blog.DeleteBlogResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.blog.BlogServiceClient.prototype.deleteBlog =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/blog.BlogService/DeleteBlog',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_DeleteBlog,
+      callback);
+};
+
+
+/**
+ * @param {!proto.blog.DeleteBlogRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.blog.DeleteBlogResponse>}
+ *     Promise that resolves to the response
+ */
+proto.blog.BlogServicePromiseClient.prototype.deleteBlog =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/blog.BlogService/DeleteBlog',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_DeleteBlog);
+};
+
+
 module.exports = proto.blog;
 
