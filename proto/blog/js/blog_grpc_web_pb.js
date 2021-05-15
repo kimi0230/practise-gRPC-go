@@ -465,5 +465,85 @@ proto.blog.BlogServicePromiseClient.prototype.listBlog =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.blog.ListBlogRepeatedRequest,
+ *   !proto.blog.ListBlogRepeatedResponse>}
+ */
+const methodDescriptor_BlogService_ListBlogs = new grpc.web.MethodDescriptor(
+  '/blog.BlogService/ListBlogs',
+  grpc.web.MethodType.UNARY,
+  proto.blog.ListBlogRepeatedRequest,
+  proto.blog.ListBlogRepeatedResponse,
+  /**
+   * @param {!proto.blog.ListBlogRepeatedRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.ListBlogRepeatedResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.blog.ListBlogRepeatedRequest,
+ *   !proto.blog.ListBlogRepeatedResponse>}
+ */
+const methodInfo_BlogService_ListBlogs = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.blog.ListBlogRepeatedResponse,
+  /**
+   * @param {!proto.blog.ListBlogRepeatedRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.blog.ListBlogRepeatedResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.blog.ListBlogRepeatedRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.blog.ListBlogRepeatedResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.blog.ListBlogRepeatedResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.blog.BlogServiceClient.prototype.listBlogs =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/blog.BlogService/ListBlogs',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_ListBlogs,
+      callback);
+};
+
+
+/**
+ * @param {!proto.blog.ListBlogRepeatedRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.blog.ListBlogRepeatedResponse>}
+ *     Promise that resolves to the response
+ */
+proto.blog.BlogServicePromiseClient.prototype.listBlogs =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/blog.BlogService/ListBlogs',
+      request,
+      metadata || {},
+      methodDescriptor_BlogService_ListBlogs);
+};
+
+
 module.exports = proto.blog;
 

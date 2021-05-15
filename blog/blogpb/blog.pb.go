@@ -559,6 +559,92 @@ func (m *ListBlogResponse) GetBlog() *Blog {
 	return nil
 }
 
+type ListBlogRepeatedRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListBlogRepeatedRequest) Reset()         { *m = ListBlogRepeatedRequest{} }
+func (m *ListBlogRepeatedRequest) String() string { return proto.CompactTextString(m) }
+func (*ListBlogRepeatedRequest) ProtoMessage()    {}
+func (*ListBlogRepeatedRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6745b25902462fb1, []int{11}
+}
+func (m *ListBlogRepeatedRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ListBlogRepeatedRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ListBlogRepeatedRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ListBlogRepeatedRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListBlogRepeatedRequest.Merge(m, src)
+}
+func (m *ListBlogRepeatedRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ListBlogRepeatedRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListBlogRepeatedRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListBlogRepeatedRequest proto.InternalMessageInfo
+
+type ListBlogRepeatedResponse struct {
+	Blog                 []*Blog  `protobuf:"bytes,1,rep,name=blog,proto3" json:"blog,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListBlogRepeatedResponse) Reset()         { *m = ListBlogRepeatedResponse{} }
+func (m *ListBlogRepeatedResponse) String() string { return proto.CompactTextString(m) }
+func (*ListBlogRepeatedResponse) ProtoMessage()    {}
+func (*ListBlogRepeatedResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_6745b25902462fb1, []int{12}
+}
+func (m *ListBlogRepeatedResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ListBlogRepeatedResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ListBlogRepeatedResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ListBlogRepeatedResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListBlogRepeatedResponse.Merge(m, src)
+}
+func (m *ListBlogRepeatedResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *ListBlogRepeatedResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListBlogRepeatedResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListBlogRepeatedResponse proto.InternalMessageInfo
+
+func (m *ListBlogRepeatedResponse) GetBlog() []*Blog {
+	if m != nil {
+		return m.Blog
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*Blog)(nil), "blog.Blog")
 	proto.RegisterType((*CreateBlogRequest)(nil), "blog.CreateBlogRequest")
@@ -571,36 +657,40 @@ func init() {
 	proto.RegisterType((*DeleteBlogResponse)(nil), "blog.DeleteBlogResponse")
 	proto.RegisterType((*ListBlogRequest)(nil), "blog.ListBlogRequest")
 	proto.RegisterType((*ListBlogResponse)(nil), "blog.ListBlogResponse")
+	proto.RegisterType((*ListBlogRepeatedRequest)(nil), "blog.ListBlogRepeatedRequest")
+	proto.RegisterType((*ListBlogRepeatedResponse)(nil), "blog.ListBlogRepeatedResponse")
 }
 
 func init() { proto.RegisterFile("blog.proto", fileDescriptor_6745b25902462fb1) }
 
 var fileDescriptor_6745b25902462fb1 = []byte{
-	// 369 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x53, 0x4d, 0x4f, 0xc2, 0x40,
-	0x14, 0xb4, 0x15, 0xf9, 0x18, 0x12, 0xb1, 0x1b, 0x95, 0x06, 0x63, 0x63, 0x38, 0x19, 0xa3, 0x68,
-	0xc0, 0x8b, 0xf1, 0x40, 0x82, 0x5e, 0x48, 0x3c, 0x61, 0xbc, 0x78, 0x21, 0xc0, 0x6e, 0xb0, 0x49,
-	0xc3, 0xd6, 0x76, 0xf1, 0xb7, 0xf8, 0x93, 0x38, 0xfa, 0x13, 0x0c, 0xfe, 0x11, 0xb3, 0x5b, 0xd6,
-	0xd6, 0x16, 0x62, 0xbd, 0x10, 0xde, 0xdb, 0x79, 0x6f, 0xe6, 0xcd, 0xa4, 0xc0, 0xd8, 0xe3, 0xd3,
-	0x96, 0x1f, 0x70, 0xc1, 0x49, 0x41, 0xfe, 0x6f, 0x4e, 0x50, 0xe8, 0x79, 0x7c, 0x4a, 0x76, 0x61,
-	0xba, 0xd4, 0x36, 0x4e, 0x8c, 0xd3, 0xca, 0xc0, 0x74, 0x29, 0x39, 0x42, 0x65, 0x34, 0x17, 0x2f,
-	0x3c, 0x18, 0xba, 0xd4, 0x36, 0x55, 0xbb, 0x1c, 0x35, 0xfa, 0x94, 0xec, 0x63, 0x47, 0xb8, 0xc2,
-	0x63, 0xf6, 0xb6, 0x7a, 0x88, 0x0a, 0x62, 0xa3, 0x34, 0xe1, 0x33, 0xc1, 0x66, 0xc2, 0x2e, 0xa8,
-	0xbe, 0x2e, 0x9b, 0x1d, 0x58, 0x77, 0x01, 0x1b, 0x09, 0x26, 0xa9, 0x06, 0xec, 0x75, 0xce, 0x42,
-	0x41, 0x1c, 0x28, 0x05, 0x8a, 0xb3, 0xda, 0x46, 0x4b, 0x49, 0x53, 0x80, 0x48, 0xd9, 0x35, 0x48,
-	0x72, 0x28, 0xf4, 0xf9, 0x2c, 0x64, 0x7f, 0x4e, 0x9d, 0xa1, 0x36, 0x60, 0x23, 0x9a, 0x24, 0xaa,
-	0xa3, 0x24, 0x9f, 0x86, 0x3f, 0xf7, 0x15, 0x65, 0xd9, 0xa7, 0xcd, 0x36, 0xf6, 0x62, 0x6c, 0xce,
-	0xfd, 0x1d, 0x58, 0x4f, 0x3e, 0xfd, 0xff, 0x29, 0xc9, 0xa1, 0x9c, 0x54, 0xe7, 0xb0, 0xee, 0x99,
-	0xc7, 0x7e, 0x53, 0x6d, 0x3c, 0xe6, 0x02, 0x24, 0x89, 0x5e, 0x71, 0x6c, 0x84, 0x5b, 0xa8, 0x3d,
-	0xb8, 0xa1, 0x48, 0xac, 0x96, 0x76, 0xc4, 0xad, 0x7c, 0x1a, 0xdb, 0x0b, 0x13, 0x55, 0x59, 0x3e,
-	0xb2, 0xe0, 0xcd, 0x9d, 0x30, 0xd2, 0x05, 0xe2, 0xd0, 0x48, 0x3d, 0xc2, 0x67, 0xb2, 0x6f, 0xd8,
-	0xd9, 0x87, 0x15, 0xe1, 0x0d, 0xca, 0x3a, 0x13, 0x72, 0x10, 0xa1, 0x52, 0x79, 0x36, 0x0e, 0xd3,
-	0xed, 0xd5, 0x68, 0x17, 0x88, 0x5d, 0xd6, 0xdc, 0x99, 0xb0, 0x34, 0xf7, 0x9a, 0x40, 0xba, 0x40,
-	0x6c, 0xa1, 0x5e, 0x90, 0x89, 0x40, 0x2f, 0x58, 0xe3, 0xf6, 0x2d, 0xca, 0xda, 0x41, 0x2d, 0x3e,
-	0x65, 0xb2, 0x16, 0x9f, 0x36, 0xfa, 0xca, 0xe8, 0x1d, 0x2f, 0x96, 0x8e, 0xf1, 0xb1, 0x74, 0x8c,
-	0xcf, 0xa5, 0x63, 0xbc, 0x7f, 0x39, 0x5b, 0xcf, 0x55, 0x09, 0xbd, 0x94, 0x3f, 0xfe, 0x78, 0x5c,
-	0x54, 0x5f, 0x6d, 0xe7, 0x3b, 0x00, 0x00, 0xff, 0xff, 0xea, 0xa7, 0xb5, 0xa2, 0xc3, 0x03, 0x00,
-	0x00,
+	// 409 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x4f, 0x4f, 0xfa, 0x40,
+	0x10, 0xa5, 0xc0, 0x8f, 0x3f, 0x8f, 0xe4, 0x87, 0xdd, 0xa8, 0x54, 0x0c, 0x8d, 0xe9, 0xc9, 0x18,
+	0x45, 0x03, 0x5e, 0xd4, 0x03, 0x09, 0x7a, 0x21, 0xe1, 0x84, 0xf1, 0xe2, 0x85, 0x00, 0xbb, 0xc1,
+	0x26, 0x0d, 0xad, 0xed, 0xe2, 0x47, 0x31, 0x7e, 0x24, 0x8f, 0x7e, 0x04, 0x83, 0x5f, 0xc4, 0xec,
+	0x96, 0xb5, 0xa5, 0x85, 0x88, 0x17, 0xc2, 0xcc, 0xbc, 0x79, 0x6f, 0x66, 0xdf, 0xa4, 0xc0, 0xd8,
+	0x71, 0xa7, 0x4d, 0xcf, 0x77, 0xb9, 0x4b, 0xf2, 0xe2, 0xbf, 0x35, 0x41, 0xbe, 0xeb, 0xb8, 0x53,
+	0xf2, 0x1f, 0x59, 0x9b, 0x1a, 0xda, 0x91, 0x76, 0x5c, 0x1e, 0x64, 0x6d, 0x4a, 0x0e, 0x51, 0x1e,
+	0xcd, 0xf9, 0x93, 0xeb, 0x0f, 0x6d, 0x6a, 0x64, 0x65, 0xba, 0x14, 0x26, 0x7a, 0x94, 0xec, 0xe2,
+	0x1f, 0xb7, 0xb9, 0xc3, 0x8c, 0x9c, 0x2c, 0x84, 0x01, 0x31, 0x50, 0x9c, 0xb8, 0x33, 0xce, 0x66,
+	0xdc, 0xc8, 0xcb, 0xbc, 0x0a, 0xad, 0x36, 0xf4, 0x5b, 0x9f, 0x8d, 0x38, 0x13, 0x52, 0x03, 0xf6,
+	0x3c, 0x67, 0x01, 0x27, 0x26, 0xe4, 0x04, 0x52, 0xb3, 0xd2, 0x42, 0x53, 0x8e, 0x26, 0x01, 0xe1,
+	0x64, 0x97, 0x20, 0xf1, 0xa6, 0xc0, 0x73, 0x67, 0x01, 0xfb, 0xb5, 0xeb, 0x04, 0xd5, 0x01, 0x1b,
+	0xd1, 0xb8, 0x50, 0x0d, 0x45, 0x51, 0x1a, 0xfe, 0xec, 0x57, 0x10, 0x61, 0x8f, 0x5a, 0x2d, 0xec,
+	0x44, 0xd8, 0x2d, 0xf9, 0xdb, 0xd0, 0x1f, 0x3c, 0xfa, 0xf7, 0x55, 0xe2, 0x4d, 0x5b, 0x4a, 0x9d,
+	0x42, 0xbf, 0x63, 0x0e, 0x5b, 0x95, 0xda, 0xb8, 0xcc, 0x19, 0x48, 0x1c, 0xbd, 0xd4, 0xd8, 0x08,
+	0xd7, 0x51, 0xed, 0xdb, 0x01, 0x8f, 0x51, 0x8b, 0xe7, 0x88, 0x52, 0x5b, 0xce, 0x78, 0x80, 0x5a,
+	0xd4, 0xe3, 0x09, 0xb7, 0xa8, 0xa2, 0xbb, 0x86, 0x91, 0x2e, 0xa5, 0x68, 0x73, 0xeb, 0x68, 0x5b,
+	0xaf, 0x39, 0x54, 0x44, 0x78, 0xcf, 0xfc, 0x17, 0x7b, 0xc2, 0x48, 0x07, 0x88, 0x6e, 0x81, 0xd4,
+	0x42, 0x7c, 0xea, 0xa4, 0xea, 0x46, 0xba, 0xb0, 0x14, 0xbc, 0x42, 0x49, 0x59, 0x4d, 0xf6, 0x42,
+	0x54, 0xe2, 0x4c, 0xea, 0xfb, 0xc9, 0xf4, 0xb2, 0xb5, 0x03, 0x44, 0xe6, 0x29, 0xed, 0xd4, 0x0d,
+	0x28, 0xed, 0x35, 0x3e, 0x77, 0x80, 0xc8, 0x19, 0x45, 0x90, 0x72, 0x56, 0x11, 0xac, 0x31, 0xf1,
+	0x06, 0x25, 0xf5, 0x92, 0x6a, 0xf8, 0x84, 0x77, 0x6a, 0xf8, 0xa4, 0x7f, 0x17, 0x1a, 0xe9, 0xa3,
+	0xac, 0xb2, 0x01, 0x69, 0x24, 0x61, 0x2b, 0x96, 0xd5, 0xcd, 0x4d, 0xe5, 0x90, 0xcd, 0xca, 0x74,
+	0x1b, 0xef, 0x0b, 0x53, 0xfb, 0x58, 0x98, 0xda, 0xe7, 0xc2, 0xd4, 0xde, 0xbe, 0xcc, 0xcc, 0x63,
+	0x45, 0xb4, 0x9c, 0x8b, 0x1f, 0x6f, 0x3c, 0x2e, 0xc8, 0x4f, 0x4b, 0xfb, 0x3b, 0x00, 0x00, 0xff,
+	0xff, 0xc4, 0xe6, 0xe1, 0xd6, 0x68, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -620,7 +710,10 @@ type BlogServiceClient interface {
 	ReadBlog(ctx context.Context, in *ReadBlogRequest, opts ...grpc.CallOption) (*ReadBlogResponse, error)
 	UpdateBlog(ctx context.Context, in *UpdateBlogRequest, opts ...grpc.CallOption) (*UpdateBlogResponse, error)
 	DeleteBlog(ctx context.Context, in *DeleteBlogRequest, opts ...grpc.CallOption) (*DeleteBlogResponse, error)
+	// https://stackoverflow.com/questions/43167762/how-to-return-an-array-in-protobuf-service-rpc
 	ListBlog(ctx context.Context, in *ListBlogRequest, opts ...grpc.CallOption) (BlogService_ListBlogClient, error)
+	// set a response message which will use a repeated object:
+	ListBlogs(ctx context.Context, in *ListBlogRepeatedRequest, opts ...grpc.CallOption) (*ListBlogRepeatedResponse, error)
 }
 
 type blogServiceClient struct {
@@ -699,6 +792,15 @@ func (x *blogServiceListBlogClient) Recv() (*ListBlogResponse, error) {
 	return m, nil
 }
 
+func (c *blogServiceClient) ListBlogs(ctx context.Context, in *ListBlogRepeatedRequest, opts ...grpc.CallOption) (*ListBlogRepeatedResponse, error) {
+	out := new(ListBlogRepeatedResponse)
+	err := c.cc.Invoke(ctx, "/blog.BlogService/ListBlogs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BlogServiceServer is the server API for BlogService service.
 type BlogServiceServer interface {
 	CreateBlog(context.Context, *CreateBlogRequest) (*CreateBlogResponse, error)
@@ -706,7 +808,10 @@ type BlogServiceServer interface {
 	ReadBlog(context.Context, *ReadBlogRequest) (*ReadBlogResponse, error)
 	UpdateBlog(context.Context, *UpdateBlogRequest) (*UpdateBlogResponse, error)
 	DeleteBlog(context.Context, *DeleteBlogRequest) (*DeleteBlogResponse, error)
+	// https://stackoverflow.com/questions/43167762/how-to-return-an-array-in-protobuf-service-rpc
 	ListBlog(*ListBlogRequest, BlogService_ListBlogServer) error
+	// set a response message which will use a repeated object:
+	ListBlogs(context.Context, *ListBlogRepeatedRequest) (*ListBlogRepeatedResponse, error)
 }
 
 // UnimplementedBlogServiceServer can be embedded to have forward compatible implementations.
@@ -727,6 +832,9 @@ func (*UnimplementedBlogServiceServer) DeleteBlog(ctx context.Context, req *Dele
 }
 func (*UnimplementedBlogServiceServer) ListBlog(req *ListBlogRequest, srv BlogService_ListBlogServer) error {
 	return status.Errorf(codes.Unimplemented, "method ListBlog not implemented")
+}
+func (*UnimplementedBlogServiceServer) ListBlogs(ctx context.Context, req *ListBlogRepeatedRequest) (*ListBlogRepeatedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBlogs not implemented")
 }
 
 func RegisterBlogServiceServer(s *grpc.Server, srv BlogServiceServer) {
@@ -826,6 +934,24 @@ func (x *blogServiceListBlogServer) Send(m *ListBlogResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
+func _BlogService_ListBlogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBlogRepeatedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BlogServiceServer).ListBlogs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/blog.BlogService/ListBlogs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BlogServiceServer).ListBlogs(ctx, req.(*ListBlogRepeatedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _BlogService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "blog.BlogService",
 	HandlerType: (*BlogServiceServer)(nil),
@@ -845,6 +971,10 @@ var _BlogService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteBlog",
 			Handler:    _BlogService_DeleteBlog_Handler,
+		},
+		{
+			MethodName: "ListBlogs",
+			Handler:    _BlogService_ListBlogs_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
@@ -1275,6 +1405,74 @@ func (m *ListBlogResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *ListBlogRepeatedRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ListBlogRepeatedRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ListBlogRepeatedRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ListBlogRepeatedResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ListBlogRepeatedResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ListBlogRepeatedResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Blog) > 0 {
+		for iNdEx := len(m.Blog) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Blog[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintBlog(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintBlog(dAtA []byte, offset int, v uint64) int {
 	offset -= sovBlog(v)
 	base := offset
@@ -1463,6 +1661,36 @@ func (m *ListBlogResponse) Size() (n int) {
 	if m.Blog != nil {
 		l = m.Blog.Size()
 		n += 1 + l + sovBlog(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *ListBlogRepeatedRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *ListBlogRepeatedResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Blog) > 0 {
+		for _, e := range m.Blog {
+			l = e.Size()
+			n += 1 + l + sovBlog(uint64(l))
+		}
 	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
@@ -2452,6 +2680,142 @@ func (m *ListBlogResponse) Unmarshal(dAtA []byte) error {
 				m.Blog = &Blog{}
 			}
 			if err := m.Blog.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipBlog(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthBlog
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ListBlogRepeatedRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowBlog
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ListBlogRepeatedRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ListBlogRepeatedRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipBlog(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthBlog
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ListBlogRepeatedResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowBlog
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ListBlogRepeatedResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ListBlogRepeatedResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Blog", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowBlog
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthBlog
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthBlog
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Blog = append(m.Blog, &Blog{})
+			if err := m.Blog[len(m.Blog)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

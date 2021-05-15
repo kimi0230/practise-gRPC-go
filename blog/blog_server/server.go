@@ -190,6 +190,38 @@ func (*server) ListBlog(res *blogpb.ListBlogRequest, stream blogpb.BlogService_L
 	return nil
 }
 
+func (*server) ListBlogs(ctx context.Context, req *blogpb.ListBlogRepeatedRequest) (*blogpb.ListBlogRepeatedResponse, error) {
+	fmt.Println("List blogs request")
+
+	// data := &[]blogItem{}
+	var results []*blogItem
+	cur, err := collection.Find(context.Background(), primitive.D{{}})
+	if err != nil {
+		return nil, status.Errorf(
+			codes.Internal,
+			fmt.Sprintf("Unknown internal error: %v", err),
+		)
+	}
+	defer cur.Close(context.Background()) // Should handle err
+
+	for cur.Next(context.Background()) {
+		tmp := &blogItem{}
+		err := cur.Decode(tmp)
+		if err != nil {
+			return nil, status.Errorf(
+				codes.Internal,
+				fmt.Sprintf("Error while decoding data from MongoDB: %v", err),
+			)
+
+		}
+		results = append(results, tmp)
+	}
+
+	return &blogpb.ListBlogRepeatedResponse{
+		Blog: dataToBlogsPb(results),
+	}, nil
+}
+
 func dataToBlogPb(data *blogItem) *blogpb.Blog {
 	return &blogpb.Blog{
 		Id:       data.ID.Hex(),
@@ -197,6 +229,21 @@ func dataToBlogPb(data *blogItem) *blogpb.Blog {
 		Content:  data.Content,
 		Title:    data.Title,
 	}
+}
+
+func dataToBlogsPb(data []*blogItem) []*blogpb.Blog {
+	blogs := []*blogpb.Blog{}
+	for _, v := range data {
+		tmp := &blogpb.Blog{
+			Id:       v.ID.Hex(),
+			AuthorId: v.AuthorID,
+			Content:  v.Content,
+			Title:    v.Title,
+		}
+		blogs = append(blogs, tmp)
+	}
+	fmt.Println(data)
+	return blogs
 }
 
 type blogItem struct {
