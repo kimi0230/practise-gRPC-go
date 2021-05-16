@@ -200,6 +200,10 @@ go run blog/blog_client/client.go
 * https://grpc.io/docs/guides/auth/
 * https://github.com/ktr0731/evans
 * https://github.com/mongodb/mongo-go-driver
+* https://grpc.io/
+* https://jbrandhorst.com/post/gogoproto/
+* https://github.com/gogo/grpc-example
+* https://jbrandhorst.com/post/gogoproto/
 
 <!-- https://www.markdownguide.org/basic-syntax/ -->
 [gotutorial]: https://developers.google.com/protocol-buffers/docs/gotutorial
