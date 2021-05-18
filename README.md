@@ -204,6 +204,10 @@ go run blog/blog_client/client.go
 * https://jbrandhorst.com/post/gogoproto/
 * https://github.com/gogo/grpc-example
 * https://jbrandhorst.com/post/gogoproto/
+* https://www.itread01.com/content/1587524882.html
+
+# TODO
+ - [ ] [middleware](https://github.com/grpc-ecosystem/go-grpc-middleware)
 
 <!-- https://www.markdownguide.org/basic-syntax/ -->
 [gotutorial]: https://developers.google.com/protocol-buffers/docs/gotutorial
