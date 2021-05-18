@@ -7,6 +7,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"reflect"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -15,6 +16,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc/status"
 	"gopkg.in/mgo.v2/bson"
@@ -28,6 +30,17 @@ type server struct {
 func (*server) CreateBlog(ctx context.Context, req *blogpb.CreateBlogRequest) (*blogpb.CreateBlogResponse, error) {
 	fmt.Println("Create blog request")
 	blog := req.GetBlog()
+	headers, ok := metadata.FromIncomingContext(ctx)
+	if !ok {
+		return nil, status.Errorf(
+			codes.Aborted,
+			"FromIncomingContext error",
+		)
+	}
+	token := headers["authorization"][0]
+	fmt.Println("headers : ", headers)
+	fmt.Println("token : ", token)
+	fmt.Println(reflect.TypeOf(token).String())
 
 	data := blogItem{
 		AuthorID: blog.GetAuthorId(),

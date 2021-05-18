@@ -9,6 +9,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/metadata"
 )
 
 func main() {
@@ -33,6 +34,9 @@ func main() {
 		log.Fatalf("could not connect: %v", err)
 	}
 	defer cc.Close()
+	header := metadata.New(map[string]string{"authorization": "token-123-456", "space": "", "org": "", "limit": "", "offset": ""})
+	// this is the critical step that includes your headers
+	ctx := metadata.NewOutgoingContext(context.Background(), header)
 
 	c := blogpb.NewBlogServiceClient(cc)
 
@@ -43,7 +47,7 @@ func main() {
 		Title:    "My First Blog",
 		Content:  "Content of the first blog",
 	}
-	createBlogRes, err := c.CreateBlog(context.Background(), &blogpb.CreateBlogRequest{Blog: blog})
+	createBlogRes, err := c.CreateBlog(ctx, &blogpb.CreateBlogRequest{Blog: blog})
 	if err != nil {
 		log.Fatalf("Unexpected error: %v", err)
 	}
@@ -53,13 +57,13 @@ func main() {
 
 	// read Blog
 	fmt.Println("Reading the blog")
-	_, err2 := c.ReadBlog(context.Background(), &blogpb.ReadBlogRequest{BlogId: "5bdc29e661b75adcac496cf4"})
+	_, err2 := c.ReadBlog(ctx, &blogpb.ReadBlogRequest{BlogId: "5bdc29e661b75adcac496cf4"})
 	if err2 != nil {
 		fmt.Printf("Error happened while reading: %v \n", err2)
 	}
 
 	readBlogReq := &blogpb.ReadBlogRequest{BlogId: blogID}
-	readBlogRes, readBlogErr := c.ReadBlog(context.Background(), readBlogReq)
+	readBlogRes, readBlogErr := c.ReadBlog(ctx, readBlogReq)
 	if readBlogErr != nil {
 		fmt.Printf("Error happened while reading: %v \n", readBlogErr)
 	}
@@ -72,14 +76,14 @@ func main() {
 		Title:    "My First Blog (edited)",
 		Content:  "Content of the first blog",
 	}
-	updateRes, updateErr := c.UpdateBlog(context.Background(), &blogpb.UpdateBlogRequest{Blog: newBlog})
+	updateRes, updateErr := c.UpdateBlog(ctx, &blogpb.UpdateBlogRequest{Blog: newBlog})
 	if updateErr != nil {
 		fmt.Printf("Error happened while updating: %v \n", updateErr)
 	}
 	fmt.Printf("Blog was updated: %v\n", updateRes)
 
 	// delete Blog
-	deleteRes, deleteErr := c.DeleteBlog(context.Background(), &blogpb.DeleteBlogRequest{BlogId: blogID})
+	deleteRes, deleteErr := c.DeleteBlog(ctx, &blogpb.DeleteBlogRequest{BlogId: blogID})
 
 	if deleteErr != nil {
 		fmt.Printf("Error happened while deleting: %v \n", deleteErr)
@@ -88,7 +92,7 @@ func main() {
 
 	// list Blogs by steam
 	fmt.Println("List Blogs by steam")
-	stream, err := c.ListBlog(context.Background(), &blogpb.ListBlogRequest{})
+	stream, err := c.ListBlog(ctx, &blogpb.ListBlogRequest{})
 	if err != nil {
 		log.Fatalf("error while calling ListBlog RPC: %v", err)
 	}
@@ -105,7 +109,7 @@ func main() {
 
 	// list Blogs by repeated object
 	fmt.Println("List Blogs by repeated object")
-	res, err := c.ListBlogs(context.Background(), &blogpb.ListBlogRepeatedRequest{})
+	res, err := c.ListBlogs(ctx, &blogpb.ListBlogRepeatedRequest{})
 	if err != nil {
 		log.Fatalf("error while calling ListBlog RPC: %v", err)
 	}
