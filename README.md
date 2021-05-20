@@ -1,14 +1,16 @@
 # gRPC Golang Course
 
-Practise gRPC [simplesteph/grpc-go-course][grpc-go-course]
+Practise gRPC base on [simplesteph/grpc-go-course][grpc-go-course].
 
 # Content
 
+- PubSub w/ moby/pkg/pubsub
 - Greeting Service
 - Calculator Service
 - Unary, Server Streaming, Client Streaming, BiDi Streaming
 - Error Handling, Deadlines, SSL Encryption
 - Blog API CRUD w/ MongoDB
+- metadata (header)
 
 # Installation
 
@@ -116,6 +118,11 @@ make build_calculator
 make build_blog
 ```
 
+### gpubsub
+``` shell
+make build_gpubsub
+```
+
 # SSL
 ### generate SSL Key
 ``` shell
@@ -194,6 +201,15 @@ go run calculator/calculator_client/client.go
 ```shell
 go run blog/blog_server/server.go
 go run blog/blog_client/client.go
+```
+
+### gpubsub
+```shell
+go run gpubsub/gpubsub_server/server.go
+# subscriber
+go run gpubsub/gpubsub_client_sub/client.go
+# publisher
+go run gpubsub/gpubsub_client_pub/client.go
 ```
 
 # Reference

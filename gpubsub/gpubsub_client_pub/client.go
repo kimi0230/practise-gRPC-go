@@ -39,7 +39,12 @@ func main() {
 
 	c := gpubsubpb.NewPubsubServiceClient(cc)
 
-	pubResult, err := c.Publish(ctx, &gpubsubpb.PublishRequest{Topic: "golang:"})
+	msg := &gpubsubpb.PubSubMessage{
+		Topic:   "golang:",
+		Payload: "Hi Golang",
+	}
+
+	pubResult, err := c.Publish(ctx, &gpubsubpb.PublishRequest{Pubsubmessage: msg})
 	if err != nil {
 		log.Fatalf("Unexpected error: %v", err)
 	}

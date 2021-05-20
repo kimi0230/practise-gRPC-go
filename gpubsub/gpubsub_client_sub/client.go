@@ -62,7 +62,7 @@ func doSubscribe(ctx context.Context, c gpubsubpb.PubsubServiceClient) {
 		if err != nil {
 			log.Fatalf("error while reading stream: %v", err)
 		}
-		log.Printf("Response from GreetManyTimes: %v", msg.GetTopic())
+		log.Printf("Response from Subscribe: %v", msg.GetPayload())
 	}
 
 }

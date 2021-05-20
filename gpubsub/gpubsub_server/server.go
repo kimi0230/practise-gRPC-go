@@ -26,7 +26,7 @@ func NewPubsubService() *Server {
 }
 
 func (s *Server) Publish(ctx context.Context, req *gpubsubpb.PublishRequest) (*gpubsubpb.PublishResponse, error) {
-	msg := req.GetTopic()
+	msg := req.GetPubsubmessage()
 	s.pub.Publish(msg)
 
 	return &gpubsubpb.PublishResponse{
@@ -36,17 +36,16 @@ func (s *Server) Publish(ctx context.Context, req *gpubsubpb.PublishRequest) (*g
 
 func (s *Server) Subscribe(req *gpubsubpb.SubscribeRequest, stream gpubsubpb.PubsubService_SubscribeServer) error {
 	ch := s.pub.SubscribeTopic(func(v interface{}) bool {
-		if key, ok := v.(string); ok {
-			if strings.HasPrefix(key, req.GetTopic()) {
-				return true
-			}
+		data := v.(*gpubsubpb.PubSubMessage)
+		if strings.HasPrefix(data.GetTopic(), req.GetTopic()) {
+			return true
 		}
 		return false
 	})
 
 	for v := range ch {
 		if err := stream.Send(&gpubsubpb.SubscribeResponse{
-			Topic: v.(string),
+			Payload: v.(*gpubsubpb.PubSubMessage).GetPayload(),
 		}); err != nil {
 			return err
 		}
