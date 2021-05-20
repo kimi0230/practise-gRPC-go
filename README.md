@@ -1,4 +1,4 @@
-# gRPC Golang Course
+# Practise gRPC Golang 
 
 Practise gRPC base on [simplesteph/grpc-go-course][grpc-go-course].
 
