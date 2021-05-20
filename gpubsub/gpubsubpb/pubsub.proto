@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package gpubsub;
+option go_package = "gpubsub/gpubsubpb";
+
+// message PubSubMessage {
+//   string topic = 1;
+//   string payload = 2;
+// }
+
+message PublishRequest { string topic = 1; }
+
+message PublishResponse { bool result = 1; }
+
+message SubscribeRequest { string topic = 1; }
+
+message SubscribeResponse { string topic = 1; }
+
+service PubsubService {
+  rpc Publish(PublishRequest) returns (PublishResponse) {};
+  rpc Subscribe(SubscribeRequest) returns (stream SubscribeResponse) {};
+}

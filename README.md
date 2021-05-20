@@ -25,6 +25,9 @@ go get -u github.com/gogo/protobuf/protoc-gen-gofast
 # MongoDB Go Driver
 go get -u go.mongodb.org/mongo-driver/mongo
 go get -u gopkg.in/mgo.v2/bson
+
+# docker pub/sub
+go get -u github.com/moby/moby/pkg/pubsub
 ```
 
 ### [evans]
