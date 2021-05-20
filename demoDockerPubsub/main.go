@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/moby/moby/pkg/pubsub"
@@ -33,12 +34,16 @@ func main() {
 	go p.Publish("docker: https://www.docker.com/")
 	time.Sleep(1 * time.Second)
 
+	wg := sync.WaitGroup{}
+	wg.Add(2)
 	go func() {
+		defer wg.Done()
 		fmt.Println("golang topic:", <-golang)
 	}()
 	go func() {
+		defer wg.Done()
 		fmt.Println("docker topic:", <-docker)
 	}()
-
-	time.Sleep(60 * time.Second)
+	wg.Wait()
+	fmt.Println("Done")
 }
