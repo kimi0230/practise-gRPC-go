@@ -267,6 +267,11 @@ type blogItem struct {
 	Title    string             `bson:"title"`
 }
 
+func fileter(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
+	log.Println("fileter:", info)
+	return handler(ctx, req)
+}
+
 func main() {
 	// if we crash the go code, we get the file name and line number
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
@@ -305,6 +310,8 @@ func main() {
 		}
 		opts = append(opts, grpc.Creds(creds))
 	}
+	// 擷取器
+	opts = append(opts, grpc.UnaryInterceptor(fileter))
 
 	s := grpc.NewServer(opts...)
 	blogpb.RegisterBlogServiceServer(s, &server{})
