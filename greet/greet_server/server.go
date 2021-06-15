@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"grpc-go-course-udemy/greet/greetpb"
+	"practise-gRPC-go/greet/greetpb"
 
 	"io"
 	"strconv"

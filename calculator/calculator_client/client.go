@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"grpc-go-course-udemy/calculator/calculatorpb"
 	"io"
+	"practise-gRPC-go/calculator/calculatorpb"
 	"time"
 
 	"log"

@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"grpc-go-course-udemy/greet/greetpb"
 	"io"
 	"log"
+	"practise-gRPC-go/greet/greetpb"
 	"time"
 
 	"golang.org/x/net/context"

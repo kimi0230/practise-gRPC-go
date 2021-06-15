@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"grpc-go-course-udemy/calculator/calculatorpb"
 	"io"
 	"math"
+	"practise-gRPC-go/calculator/calculatorpb"
 
 	"log"
 	"net"

@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	"grpc-go-course-udemy/gpubsub/gpubsubpb"
 	"log"
+	"practise-gRPC-go/gpubsub/gpubsubpb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

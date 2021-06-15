@@ -3,10 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
-	"grpc-go-course-udemy/blog/blogpb"
 	"log"
 	"net"
 	"os"
+	"practise-gRPC-go/blog/blogpb"
 	"reflect"
 	"time"
 

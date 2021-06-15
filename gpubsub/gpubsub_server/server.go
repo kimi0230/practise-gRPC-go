@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"grpc-go-course-udemy/gpubsub/gpubsubpb"
+	"practise-gRPC-go/gpubsub/gpubsubpb"
 	"strings"
 	"time"
 

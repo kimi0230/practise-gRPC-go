@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"grpc-go-course-udemy/blog/blogpb"
 	"io"
 	"log"
+	"practise-gRPC-go/blog/blogpb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

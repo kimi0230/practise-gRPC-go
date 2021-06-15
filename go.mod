@@ -1,4 +1,4 @@
-module grpc-go-course-udemy
+module practise-gRPC-go
 
 go 1.16
 
