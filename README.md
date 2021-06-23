@@ -4,7 +4,7 @@ Practise gRPC base on [simplesteph/grpc-go-course][grpc-go-course].
 
 # Content
 
-- PubSub [w/ moby/pkg/pubsub](https://github.com/moby/moby/blob/master/pkg/pubsub/publisher.go)
+- PubSub [moby/pkg/pubsub](https://github.com/moby/moby/blob/master/pkg/pubsub/publisher.go)
 - Greeting Service
 - Calculator Service
 - Unary, Server Streaming, Client Streaming, BiDi Streaming
