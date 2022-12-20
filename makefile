@@ -61,4 +61,4 @@ clean:
 	rm -rf $(CURDIR)/proto/calculator/js/*
 	rm -rf $(CURDIR)/proto/blog/js/*
 
-.PHONY: clean build all
+.PHONY: clean build all proto
