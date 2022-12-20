@@ -224,6 +224,7 @@ go run gpubsub/gpubsub_client_pub/client.go
 * https://github.com/gogo/grpc-example
 * https://jbrandhorst.com/post/gogoproto/
 * https://www.itread01.com/content/1587524882.html
+* [Robust gRPC communication on Google Cloud Run (but not only!)](https://threedots.tech/post/robust-grpc-google-cloud-run/?utm_source=convertkit&utm_medium=email&utm_campaign=Robust+GRPC+Communication+In+Google+Cloud+Run%20-%204041200)
 
 # TODO
  - [ ] [middleware](https://github.com/grpc-ecosystem/go-grpc-middleware)
