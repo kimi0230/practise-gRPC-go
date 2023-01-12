@@ -226,6 +226,20 @@ go run gpubsub/gpubsub_client_pub/client.go
 * https://www.itread01.com/content/1587524882.html
 * [Robust gRPC communication on Google Cloud Run (but not only!)](https://threedots.tech/post/robust-grpc-google-cloud-run/?utm_source=convertkit&utm_medium=email&utm_campaign=Robust+GRPC+Communication+In+Google+Cloud+Run%20-%204041200)
 
+## Notes
+數字1,2,3,4
+是用來代表編號、唯一識別碼，好讓程式識別這個變數，因為到時大家都被壓縮成二進制 認不出誰是誰，有編號要認人比較方便。
+在同一個message裡面識別碼不可重複，但不同message之間重複就沒關係了
+
+```proto
+message Blog {
+  string id = 1;
+  string author_id = 2;
+  string title = 3;
+  string content = 4;
+}
+```
+
 # TODO
  - [ ] [middleware](https://github.com/grpc-ecosystem/go-grpc-middleware)
 
